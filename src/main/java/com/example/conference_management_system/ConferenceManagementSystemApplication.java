@@ -10,4 +10,5 @@ public class ConferenceManagementSystemApplication {
         SpringApplication.run(ConferenceManagementSystemApplication.class, args);
     }
 
+
 }

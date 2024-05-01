@@ -141,20 +141,22 @@
         <div class="col-md-7">
           <div class="form_container">
             <form action="">
+
               <div>
-                <input type="text" placeholder="Full Name" />
+                <select name="cars" id="cars">
+                  <option value="Conference-1">Conference-1</option>
+                  <option value="Conference-2">Conference-2</option>
+                  <option value="Conference-3">Conference-3</option>
+                  <option value="Conference-4">Conference-4</option>
+                </select>
               </div>
               <div>
-                <input type="email" placeholder="Email" />
+                <input type="text" placeholder="Title" required style="margin-top: 20px" />
               </div>
-              <div>
-                <input type="text" placeholder="Phone Number" />
-              </div>
-              <div>
-                <input type="text" class="message-box" placeholder="Message" />
-              </div>
-              <div>
-                <input id="uploadInput" type="file"/>
+
+
+              <div >
+                <input id="uploadInput" type="file" style="border: none;"/>
 <!--                <p>-->
 <!--                  Select a file below. When it is uploaded, a link will be-->
 <!--                  displayed to the uploaded file.-->
@@ -165,7 +167,7 @@
 <!--                <span id="linkbox"></span>-->
               </div>
               <div class="btn_box">
-                <button id="send_button">
+                <button type="button" id="send_button">
                   SEND
                 </button>
               </div>

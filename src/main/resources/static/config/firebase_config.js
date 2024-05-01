@@ -21,16 +21,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const storage = getStorage()
-const storageRef = ref(storage, 'images')
+
 
 const inputElement = document.getElementById("uploadInput")
-inputElement.addEventListener("change", handleFiles, false);
+document.getElementById("send_button").addEventListener("click", handleFiles, false);
 
 function handleFiles() {
-    const fileList = this.files; /* now you can work with the file list */
+    const fileList = inputElement.files; /* now you can work with the file list */
     const selectedFile = fileList[0]
     console.log(selectedFile.name)
 
+    const storageRef = ref(storage, 'files/' + selectedFile.name)
 
     uploadBytes(storageRef, selectedFile)
         .then((snapshot) => {

@@ -153,8 +153,19 @@
               <div>
                 <input type="text" class="message-box" placeholder="Message" />
               </div>
+              <div>
+                <input id="uploadInput" type="file"/>
+<!--                <p>-->
+<!--                  Select a file below. When it is uploaded, a link will be-->
+<!--                  displayed to the uploaded file.-->
+<!--                </p>-->
+<!--                <h6>Choose File</h6>-->
+<!--                <input type="file" id="file" name="file" />-->
+<!--                <h6>File URL:</h6>-->
+<!--                <span id="linkbox"></span>-->
+              </div>
               <div class="btn_box">
-                <button>
+                <button id="send_button">
                   SEND
                 </button>
               </div>
@@ -338,6 +349,9 @@
   <!-- custom js -->
   <script src="js/custom.js"></script>
 
+
+  <!--  firebase config-->
+  <script type="module" src="config/firebase_config.js"></script>
 
 </body>
 

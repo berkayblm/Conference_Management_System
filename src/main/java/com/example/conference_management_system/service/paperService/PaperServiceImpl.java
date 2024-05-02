@@ -1,4 +1,4 @@
-package com.example.conference_management_system.service.PaperService;
+package com.example.conference_management_system.service.paperService;
 
 import com.example.conference_management_system.dto.SubmittedPaper;
 import com.example.conference_management_system.entity.Conference;

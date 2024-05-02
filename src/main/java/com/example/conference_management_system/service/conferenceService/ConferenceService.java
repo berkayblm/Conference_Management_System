@@ -7,16 +7,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ConferenceService {
+public interface ConferenceService {
 
-    private final ConferenceRepository conferenceRepository;
+     List<Conference> getAllConferences();
 
-    @Autowired
-    public ConferenceService(ConferenceRepository conferenceRepository) {
-        this.conferenceRepository = conferenceRepository;
-    }
-
-    public List<Conference> getAllConferences() {
-        return conferenceRepository.findAll();
-    }
 }

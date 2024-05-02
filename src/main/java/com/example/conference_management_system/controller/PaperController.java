@@ -1,7 +1,7 @@
 package com.example.conference_management_system.controller;
 
 import com.example.conference_management_system.dto.SubmittedPaper;
-import com.example.conference_management_system.service.PaperService.PaperService;
+import com.example.conference_management_system.service.paperService.PaperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

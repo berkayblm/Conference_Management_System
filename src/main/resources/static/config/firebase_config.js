@@ -68,9 +68,46 @@ function handleFiles() {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                 console.log('File available at', downloadURL);
                 //todo: handle downloadURL
+                submitPaper(downloadURL, document.getElementById("paper_title").value);
             });
         }
     );
 
 }
+
+
+const submitPaper = async (downloadURL, paperTitle) => {
+    const url = 'http://localhost:8080/api/papers/submitPaper';
+    const data = {
+        title: paperTitle,
+        paperUrl: downloadURL,
+        senderUserId: 2,
+        conferenceId: 2
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            console.log('Paper submitted successfully, şimdi biat et bana köle');
+            // You can handle success actions here, such as showing a success message to the user
+        } else {
+            console.error('Failed to submit paper');
+            // Handle error scenarios here
+        }
+    } catch (error) {
+        console.error('Error submitting paper:', error);
+        // Handle network errors or other exceptions
+    }
+};
+
+// Call the function to submit the paper
+// submitPaper();
+
 

@@ -1,86 +1,67 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <!-- Basic -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-    <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-<head>
-
-<body>
-<section class="vh-100">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-6 text-black">
-
-                <div class="px-5 ms-xl-4">
-                    <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
-                    <span class="h1 fw-bold mb-0">Logo</span>
-                </div>
-
-                <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-
-                    <form style="width: 23rem;">
-
-                        <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
-
-                        <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="email" id="form2Example18" class="form-control form-control-lg" />
-                            <label class="form-label" for="form2Example18">Email address</label>
-                        </div>
-
-                        <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="password" id="form2Example28" class="form-control form-control-lg" />
-                            <label class="form-label" for="form2Example28">Password</label>
-                        </div>
-
-                        <div class="pt-1 mb-4">
-                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-lg btn-block" type="button" style="background-color: #00c6a9; color: #fff;">Login</button>
-
-<!--                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-info btn-lg btn-block" type="button">Login</button>-->
-                        </div>
-
-                        <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
-<!--                        <p>Don't have an account? <a href="signup.html" class="link-info">Register here</a></p>-->
-                        <p>Don't have an account? <a href="signup.html" class="link-info" style="color: #00c6a9;">Register here</a></p>
-
-
-                    </form>
-
-                </div>
-
-<!--                https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img3.webp-->
-            </div>
-            <div class="col-sm-6 px-0 d-none d-sm-block">
-                <img src="images/conference.png"
-                     alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
-            </div>
-        </div>
-    </div>
-</section>
-</body>
-<html>
-
-
-
-<style>
-
-    .bg-image-vertical {
-        position: relative;
-        overflow: hidden;
-        background-repeat: no-repeat;
-        background-position: right center;
-        background-size: auto 100%;
-    }
-
-    @media (min-width: 1025px) {
-        .h-custom-2 {
-            height: 100%;
+    <title>CMS</title>
+    <link rel="stylesheet" type="text/css" href="css/slide.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <style>
+        .guest-link-container {
+            text-align: center;
+            margin-top: 10px; /* Adjust the top margin as needed */
         }
-    }
-</style>
+
+        #continueAsGuest {
+            color: #00c6a9; /* Change the color to your desired color */
+            text-decoration: none; /* Remove underline */
+        }
+
+        #continueAsGuest:hover {
+            color: #027564; /* Change color on hover if needed */
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <input type="checkbox" id="chk" aria-hidden="true">
+
+    <div class="signup">
+        <form>
+            <label for="chk" aria-hidden="true">Sign up</label>
+            <input type="text" name="txt" placeholder="User name" required="">
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="pswd" placeholder="Password" required="">
+            <button>Sign up</button>
+        </form>
+    </div>
+
+    <div class="login">
+        <form id="loginForm"> <!-- Added an ID for the form -->
+            <label for="chk" aria-hidden="true">Login</label>
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="pswd" placeholder="Password" required="">
+            <button type="submit">Login</button> <!-- Changed button type to submit -->
+            <div class="guest-link-container">
+                <a href="#" id="continueAsGuest">Continue as a Guest</a> <!-- Added "Continue as a Guest" link -->
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevents the form from submitting in the traditional way
+
+        // Your redirection logic here
+        window.location.href = "index.html";
+    });
+
+    document.getElementById("continueAsGuest").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevents the link from navigating to another page
+
+        // Your redirection logic here
+        window.location.href = "index.html";
+    });
+</script>
+
+</body>
+</html>

@@ -1,50 +1,69 @@
-
-const getConferences = async () => {
-    const url = 'http://localhost:8080/api/conferences';
+import {getConferences} from "./api/api.js";
 
 
-
+const fetchConferences = async () => {
     try {
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        const conferenceList = await getConferences();
+        console.log('Returned conference list:', conferenceList);
+        // You can use the conferenceList object here
 
-        if (response.ok) {
+        const carouselContainer = document.querySelector('.owl-carousel.team_carousel');
 
-            const conferenceList = await response.json();
+        // Loop through the conferenceList and create conference items
+        conferenceList.forEach(conference => {
+            // Create conference item elements
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('item');
+            const boxDiv = document.createElement('div');
+            boxDiv.classList.add('box');
+            const imgBoxDiv = document.createElement('div');
+            imgBoxDiv.classList.add('img-box');
+            const img = document.createElement('img');
+            img.src = 'images/konferans_ornek5.jpg';
+            img.alt = 'Conference Image';
+            const detailBoxDiv = document.createElement('div');
+            detailBoxDiv.classList.add('detail-box');
+            const titleH5 = document.createElement('h5');
+            titleH5.style.color = '#00c6a9';
+            titleH5.textContent = conference.title;
+            const descriptionH6 = document.createElement('h6');
+            descriptionH6.style.color = 'black';
+            descriptionH6.textContent = conference.date;
+            const venueH6 = document.createElement('h6');
+            venueH6.style.color = 'black';
+            venueH6.style.textAlign = 'start';
+            venueH6.innerHTML = `<i class="fa fa-map-marker"></i> ${conference.venue}`;
+            const dateH6 = document.createElement('h6');
+            dateH6.style.color = 'black';
+            dateH6.innerHTML = `<i class="fa fa-calendar"></i> ${conference.date}`;
+            const button = document.createElement('button');
+            button.type = 'submit';
+            button.style.backgroundColor = '#00c6a9';
+            button.style.color = 'white';
+            button.classList.add('btn');
+            button.textContent = 'View Conference';
 
-            console.log('Conferences listed', conferenceList);
+            // Append elements to the conference item
+            imgBoxDiv.appendChild(img);
+            detailBoxDiv.appendChild(titleH5);
+            detailBoxDiv.appendChild(descriptionH6);
+            detailBoxDiv.appendChild(venueH6);
+            detailBoxDiv.appendChild(dateH6);
+            detailBoxDiv.appendChild(button);
+            boxDiv.appendChild(imgBoxDiv);
+            boxDiv.appendChild(detailBoxDiv);
+            itemDiv.appendChild(boxDiv);
 
-            const conferenceListDiv = document.querySelector(".conference-list");
+            // Append the conference item to the carousel container
+            carouselContainer.appendChild(itemDiv);
 
-            // Create select element
-            const selectElement = document.createElement('select');
-            selectElement.className = 'conference-select'; // Optional: add class name for styling
-
-            // Append select element to the div
-            conferenceListDiv.appendChild(selectElement);
-
-            // Create and append options for each conference
-            conferenceList.forEach(conference => {
-                const option = document.createElement('option');
-                option.value = conference.conferenceId; // Set value to conference ID
-                option.textContent = conference.title; // Set text to conference title
-                selectElement.appendChild(option);
-            });
+        })
 
 
-            // You can handle success actions here, such as showing a success message to the user
-        } else {
-            console.error('Failed to get conferences');
-            // Handle error scenarios here
-        }
     } catch (error) {
-        console.error('Error retrieving conferences:', error);
-        // Handle network errors or other exceptions
+        console.error('Error fetching conferences:', error);
     }
 };
 
-getConferences();
+// Call the function
+fetchConferences();

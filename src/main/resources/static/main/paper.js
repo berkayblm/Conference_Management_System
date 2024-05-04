@@ -6,6 +6,8 @@ import {
     getDownloadURL
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-storage.js";
 
+import {getConferences} from "./api/api.js"
+
 const firebaseConfig = {
     apiKey: "AIzaSyCQiv1dgKBHYZIxNvVsUB7u11mHnUroiZ8",
     authDomain: "conference-management-sy-81c69.firebaseapp.com",
@@ -117,53 +119,40 @@ const submitPaper = async (downloadURL, paperTitle) => {
 };
 
 
-
-const getConferences = async () => {
-    const url = 'http://localhost:8080/api/conferences';
-
-
-
+const fetchConferences = async () => {
     try {
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
+        const conferenceList = await getConferences();
+        console.log('Returned conference list:', conferenceList);
+        // You can use the conferenceList object here
+
+
+        const conferenceListDiv = document.querySelector(".conference-list");
+
+// Create select element
+        const selectElement = document.createElement('select');
+        selectElement.className = 'conference-select'; // Optional: add class name for styling
+
+// Append select element to the div
+        conferenceListDiv.appendChild(selectElement);
+
+// Create and append options for each conference
+        conferenceList.forEach(conference => {
+            const option = document.createElement('option');
+            option.value = conference.conferenceId; // Set value to conference ID
+            option.textContent = conference.title; // Set text to conference title
+            selectElement.appendChild(option);
         });
 
-        if (response.ok) {
 
-            const conferenceList = await response.json();
-
-            console.log('Conferences listed', conferenceList);
-
-            const conferenceListDiv = document.querySelector(".conference-list");
-
-            // Create select element
-            const selectElement = document.createElement('select');
-            selectElement.className = 'conference-select'; // Optional: add class name for styling
-
-            // Append select element to the div
-            conferenceListDiv.appendChild(selectElement);
-
-            // Create and append options for each conference
-            conferenceList.forEach(conference => {
-                const option = document.createElement('option');
-                option.value = conference.conferenceId; // Set value to conference ID
-                option.textContent = conference.title; // Set text to conference title
-                selectElement.appendChild(option);
-            });
-
-
-            // You can handle success actions here, such as showing a success message to the user
-        } else {
-            console.error('Failed to get conferences');
-            // Handle error scenarios here
-        }
     } catch (error) {
-        console.error('Error retrieving conferences:', error);
-        // Handle network errors or other exceptions
+        console.error('Error fetching conferences:', error);
     }
 };
 
-getConferences();
+// Call the function
+fetchConferences();
+
+
+
+
+

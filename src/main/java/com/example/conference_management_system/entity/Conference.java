@@ -30,5 +30,8 @@ public class Conference {
     @Column(name = "theme")
     private String theme;
 
+    @Column(name = "location")
+    private String location;
+
 
 }

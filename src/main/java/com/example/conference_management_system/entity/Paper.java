@@ -22,6 +22,12 @@ public class Paper {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "abstract")
+    private String paperAbstract;
+
+    @Column(name = "keywords")
+    private String keywords;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private PaperStatus status;

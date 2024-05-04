@@ -82,8 +82,13 @@ const submitPaper = async (downloadURL, paperTitle) => {
     const selectElement = document.querySelector('.conference-select');
     const selectedConferenceId = selectElement.value;
 
+    const abstractValue = document.getElementById("abstract").value;
+    const keywordsValue = document.getElementById("keywords").value;
+
     const data = {
         title: paperTitle,
+        paperAbstract: abstractValue,
+        keywords: keywordsValue,
         paperUrl: downloadURL,
         senderUserId: 2,
         conferenceId: selectedConferenceId

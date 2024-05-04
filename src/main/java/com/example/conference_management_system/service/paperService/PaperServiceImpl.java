@@ -46,9 +46,11 @@ public class PaperServiceImpl implements PaperService {
         Paper paper = new Paper();
         paper.setPaperUrl(submittedPaper.getPaperUrl());
         paper.setTitle(submittedPaper.getTitle());
+        paper.setPaperAbstract(submittedPaper.getPaperAbstract());
+        paper.setKeywords(submittedPaper.getKeywords());
         paper.setStatus(status);
-        paper.setConference(conference.get());
-        paper.setSenderUser(user.get());
+        conference.ifPresent(paper::setConference);
+        user.ifPresent(paper::setSenderUser);
 
         paperRepository.save(paper);
 

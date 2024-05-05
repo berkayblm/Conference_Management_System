@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "firebase": "^10.11.1"
+    "crypto-js": "^4.2.0",
+    "firebase": "^10.11.1",
+    "jsonwebtoken": "^9.0.2"
   },
   "type": "module"
 }

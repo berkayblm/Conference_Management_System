@@ -92,7 +92,7 @@ const submitPaper = async (downloadURL, paperTitle) => {
         paperAbstract: abstractValue,
         keywords: keywordsValue,
         paperUrl: downloadURL,
-        senderUserId: 2,
+        senderUserId: sessionStorage.getItem("userId"),
         conferenceId: selectedConferenceId
     };
 
@@ -152,6 +152,8 @@ const fetchConferences = async () => {
 // Call the function
 fetchConferences();
 
+
+console.log(sessionStorage.getItem("userId"), sessionStorage.getItem("userRole"), sessionStorage.getItem("userName"))
 
 
 

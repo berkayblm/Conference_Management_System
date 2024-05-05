@@ -7,7 +7,7 @@ const fetchConferences = async () => {
         console.log('Returned conference list:', conferenceList);
         // You can use the conferenceList object here
 
-        const carouselContainer = document.querySelector('.owl-carousel.team_carousel');
+        /*const carouselContainer = document.querySelector('.owl-carousel.team_carousel');
 
         // Loop through the conferenceList and create conference items
         conferenceList.forEach(conference => {
@@ -32,7 +32,7 @@ const fetchConferences = async () => {
             const venueH6 = document.createElement('h6');
             venueH6.style.color = 'black';
             venueH6.style.textAlign = 'start';
-            venueH6.innerHTML = `<i class="fa fa-map-marker"></i> ${conference.venue}`;
+            venueH6.innerHTML = `<i class="fa fa-map-marker"></i> ${conference.location}`;
             const dateH6 = document.createElement('h6');
             dateH6.style.color = 'black';
             dateH6.innerHTML = `<i class="fa fa-calendar"></i> ${conference.date}`;
@@ -57,7 +57,7 @@ const fetchConferences = async () => {
             // Append the conference item to the carousel container
             carouselContainer.appendChild(itemDiv);
 
-        })
+        })*/
 
 
     } catch (error) {

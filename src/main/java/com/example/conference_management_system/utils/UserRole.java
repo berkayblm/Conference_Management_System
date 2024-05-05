@@ -5,5 +5,6 @@ public enum UserRole {
     Participant,
     Reviewer,
     Organizer,
-    Presenter
+    Presenter,
+    Author
 }

@@ -7,7 +7,7 @@ create table USER(
                      username VARCHAR(255) UNIQUE,
                      email VARCHAR(255) UNIQUE,
                      password VARCHAR(255),
-                     user_role ENUM('Participant','Reviewer','Organizer','Presenter')
+                     user_role ENUM('Participant','Reviewer','Organizer','Presenter','Author')
 
 );
 
@@ -65,3 +65,20 @@ VALUES
     ('Tech Summit 2024', '2024-07-15', 'Emerging Technologies', 'Istanbul'),
     ('Science Conference', '2024-09-20', 'Advancements in Physics', 'Dubai'),
     ('Business Expo', '2024-11-10', 'Entrepreneurship and Innovation','FLorida');
+
+
+INSERT INTO `USER` (username, email, password, user_role)
+VALUES
+    ('author1', 'author1@example.com', 'password1', 'Author'),
+    ('author2', 'author2@example.com', 'password2', 'Author'),
+    ('author3', 'author3@example.com', 'password3', 'Author'),
+    ('author4', 'author4@example.com', 'password4', 'Author'),
+    ('author5', 'author5@example.com', 'password5', 'Author');
+
+INSERT INTO `USER` (username, email, password, user_role)
+VALUES
+    ('reviewer1', 'reviewer1@example.com', 'password1', 'Reviewer'),
+    ('reviewer2', 'reviewer2@example.com', 'password2', 'Reviewer'),
+    ('reviewer3', 'reviewer3@example.com', 'password3', 'Reviewer'),
+    ('reviewer4', 'reviewer4@example.com', 'password4', 'Reviewer'),
+    ('reviewer5', 'reviewer5@example.com', 'password5', 'Reviewer');

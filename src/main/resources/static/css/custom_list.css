@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+:root {
+    --container-height: 498px;
+}
+
+section.custom-list {
+    position: relative;
+    padding-right: 50px;
+    timeline-scope: --listTimeline;
+}
+
+.custom-list {
+    width: 1000px;
+    max-height: var(--container-height);
+    margin: 0 auto; /* Yatayda merkezlemek için */
+    border-radius: 5px;
+    scroll-snap-type: y mandatory;
+    overscroll-behavior-y: contain;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-timeline: --listTimeline block;
+}
+
+
+ul.custom-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    background: #eee5e5;
+}
+
+li.custom-list {
+    width: 100%;
+    padding: 25px;
+    border-top: 1px solid #ccc;
+    scroll-snap-align: start;
+    overflow-y: hidden; /* İçerik için kaydırma devre dışı bırakıldı */
+}
+
+
+li:first-child {
+    border: 0;
+}
+
+
+body.custom-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #ddcecd;
+    font-family: "Poppins", sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #28afb0;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #19647e;
+}

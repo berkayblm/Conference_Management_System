@@ -29,4 +29,12 @@ public class UserServiceImpl implements UserService{
         return null;
 
     }
+
+    @Override
+    public User getUserById(int id) {
+        Optional<User> user = userRepository.getUserByUserId(id);
+        if(user.isPresent()) return user.get();
+
+        else return null;
+    }
 }

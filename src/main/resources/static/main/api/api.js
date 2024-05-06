@@ -2,8 +2,6 @@
 export const getConferences = async () => {
     const url = 'http://localhost:8080/api/conferences';
 
-
-
     try {
         const response = await fetch(url, {
             method: 'GET',
@@ -31,3 +29,40 @@ export const getConferences = async () => {
         // Handle network errors or other exceptions
     }
 };
+
+
+export const getReviews = async () => {
+
+    const reviewerId = sessionStorage.getItem("userId");
+
+    const url = `http://localhost:8080/api/reviews/${reviewerId}`;
+
+
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+
+            const reviewList = await response.json();
+
+            console.log('Reviews listed', reviewList);
+            return reviewList;
+
+
+
+            // You can handle success actions here, such as showing a success message to the user
+        } else {
+            console.error('Failed to get reviews');
+            // Handle error scenarios here
+        }
+    } catch (error) {
+        console.error('Error retrieving reviews:', error);
+        // Handle network errors or other exceptions
+    }
+
+}

@@ -25,6 +25,7 @@ public class PaperServiceImpl implements PaperService {
 
     @Autowired
     private ConferenceRepository conferenceRepository;
+
     @Autowired
     private PaperRepository paperRepository;
 

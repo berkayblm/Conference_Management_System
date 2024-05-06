@@ -9,4 +9,6 @@ import java.util.Optional;
 public interface UserService {
 
     User getUser(String email, String password);
+
+    User getUserById(int id);
 }

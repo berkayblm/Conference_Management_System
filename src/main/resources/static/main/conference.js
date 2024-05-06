@@ -1,6 +1,22 @@
 import {getConferences} from "./api/api.js";
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    var userRole = sessionStorage.getItem("userRole");
+    if (userRole === 'Reviewer') {
+        var ul = document.querySelector('.navbar-nav');
+        var li = document.createElement('li');
+        li.classList.add('nav-item');
+        var a = document.createElement('a');
+        a.classList.add('nav-link');
+        a.href = 'assigned_reviews.html';
+        a.textContent = 'Submitted Reviews';
+        li.appendChild(a);
+        ul.appendChild(li);
+    }
+});
+
+
 const fetchConferences = async () => {
     try {
         const conferenceList = await getConferences();

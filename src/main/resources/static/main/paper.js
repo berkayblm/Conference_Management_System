@@ -8,6 +8,22 @@ import {
 
 import {getConferences} from "./api/api.js"
 
+document.addEventListener("DOMContentLoaded", function() {
+    var userRole = sessionStorage.getItem("userRole");
+    if (userRole === 'Reviewer') {
+        var ul = document.querySelector('.navbar-nav');
+        var li = document.createElement('li');
+        li.classList.add('nav-item');
+        var a = document.createElement('a');
+        a.classList.add('nav-link');
+        a.href = 'assigned_reviews.html';
+        a.textContent = 'Submitted Reviews';
+        li.appendChild(a);
+        ul.appendChild(li);
+    }
+});
+
+
 const firebaseConfig = {
     apiKey: "AIzaSyCQiv1dgKBHYZIxNvVsUB7u11mHnUroiZ8",
     authDomain: "conference-management-sy-81c69.firebaseapp.com",
@@ -154,6 +170,8 @@ fetchConferences();
 
 
 console.log(sessionStorage.getItem("userId"), sessionStorage.getItem("userRole"), sessionStorage.getItem("userName"))
+
+
 
 
 

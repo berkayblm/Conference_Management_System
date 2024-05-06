@@ -70,8 +70,11 @@
                   <li class="nav-item">
                     <a class="nav-link" href="review.html">Reviews</a>
                   </li>
-                  <li class="nav-item">
+                  <li id="papers" class="nav-item" style="display: none">
                     <a class="nav-link" href="paper.html">Papers</a>
+                  </li>
+                  <li id="submitted_reviews" class="nav-item" style="display: none">
+                    <a class="nav-link" href="assigned_reviews.html">Submitted Reviews</a>
                   </li>
                 </ul>
               </div>
@@ -246,22 +249,7 @@
   <!-- custom js -->
   <script src="js/custom.js"></script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var userRole = sessionStorage.getItem("userRole");
-    if (userRole === 'Reviewer') {
-      var ul = document.querySelector('.navbar-nav');
-      var li = document.createElement('li');
-      li.classList.add('nav-item');
-      var a = document.createElement('a');
-      a.classList.add('nav-link');
-      a.href = 'assigned_reviews.html';
-      a.textContent = 'Submitted Reviews';
-      li.appendChild(a);
-      ul.appendChild(li);
-    }
-  });
-</script>
+  <script type="module" src="main/changeVisibility.js"></script>
 </body>
 
 </html>

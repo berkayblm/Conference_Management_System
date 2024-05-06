@@ -70,12 +70,12 @@
                 <li class="nav-item">
                   <a class="nav-link" href="review.html">Reviews</a>
                 </li>
-                <li id="papers" class="nav-item">
+                <li id="papers" class="nav-item" style="display: none">
                   <a class="nav-link" href="paper.html">Papers</a>
                 </li>
-<!--                <li id="submitted_reviews" class="nav-item">-->
-<!--                  <a class="nav-link" href="paper.html">Submitted Reviews</a>-->
-<!--                </li>-->
+                <li id="submitted_reviews" class="nav-item" style="display: none">
+                  <a class="nav-link" href="assigned_reviews.html">Submitted Reviews</a>
+                </li>
               </ul>
             </div>
             <div class="quote_btn-container">
@@ -708,10 +708,10 @@
 <!-- custom js -->
 <script src="js/custom.js"></script>
 
-<script type="module" src="main/index.js"></script>
+<script type="module" src="main/changeVisibility.js"></script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  /*document.addEventListener("DOMContentLoaded", function() {
     var userRole = sessionStorage.getItem("userRole");
     if (userRole === 'Reviewer') {
       var ul = document.querySelector('.navbar-nav');
@@ -724,7 +724,7 @@
       li.appendChild(a);
       ul.appendChild(li);
     }
-  });
+  });*/
 </script>
 
 </body>

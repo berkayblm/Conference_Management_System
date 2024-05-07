@@ -1,5 +1,6 @@
 package com.example.conference_management_system.controller;
 
+import com.example.conference_management_system.dto.UpdateReviewDTO;
 import com.example.conference_management_system.entity.Review;
 import com.example.conference_management_system.entity.User;
 import com.example.conference_management_system.service.reviewService.ReviewService;
@@ -28,5 +29,13 @@ public class ReviewController {
                                         .findAllReviewsByReviewer(reviewer);
 
         return reviewList;
+    }
+
+    @PostMapping("/updateReview")
+    public String updateReviewByReviewId(@RequestBody UpdateReviewDTO updateReviewDTO) {
+
+        return reviewService.updateReview(updateReviewDTO);
+
+
     }
 }

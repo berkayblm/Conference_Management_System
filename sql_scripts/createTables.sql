@@ -28,7 +28,7 @@ create table PAPER(
                       title VARCHAR(255),
                       abstract VARCHAR(1000),
                       keywords VARCHAR(255),
-                      status ENUM('Pending','Accepted','Rejected'),
+                      status ENUM('Pending','Accepted','Rejected','Revision'),
                       paper_url VARCHAR(1000),
                       sender_user_id INT,
                       conference_id INT,
@@ -39,6 +39,7 @@ create table PAPER(
 
 
 );
+
 
 create table REVIEW(
                        review_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -74,6 +75,7 @@ VALUES
     ('author3', 'author3@example.com', 'password3', 'Author'),
     ('author4', 'author4@example.com', 'password4', 'Author'),
     ('author5', 'author5@example.com', 'password5', 'Author');
+
 
 INSERT INTO `USER` (username, email, password, user_role)
 VALUES

@@ -1,5 +1,6 @@
 package com.example.conference_management_system.service.reviewService;
 
+import com.example.conference_management_system.dto.UpdateReviewDTO;
 import com.example.conference_management_system.entity.Review;
 import com.example.conference_management_system.entity.User;
 import org.springframework.stereotype.Service;
@@ -10,4 +11,6 @@ import java.util.List;
 public interface ReviewService {
 
     List<Review> findAllReviewsByReviewer(User user);
+
+    String updateReview(UpdateReviewDTO updateReviewDTO);
 }

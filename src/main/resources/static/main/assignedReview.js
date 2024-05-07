@@ -1,4 +1,4 @@
-import {getReviews} from "./api/api.js"
+import {getReviews, sendReview} from "./api/api.js"
 
 
 
@@ -34,6 +34,8 @@ const getReviewsAsyc = async () => {
             const button = li.querySelector('.btn-send-review');
             button.addEventListener('click', () => {
                 // Create popup
+                const data = paper;
+
                 const popup = document.createElement('div');
                 popup.classList.add('review-popup');
                 popup.innerHTML = `
@@ -43,6 +45,7 @@ const getReviewsAsyc = async () => {
                         <input type="number" id="rating" placeholder="Enter your rating (1-5)">
                         <select id="status">
                             <option value="Accepted">Accepted</option>
+                            <option value="Revision">Revision</option>
                             <option value="Rejected">Rejected</option>
                         </select>
                         <button id="send-review-btn" class="btn" style="background-color: #00c6a9; color: white;">Send Review</button>
@@ -55,8 +58,11 @@ const getReviewsAsyc = async () => {
                 sendReviewBtn.addEventListener('click', () => {
                     const comment = popup.querySelector('#comment').value;
                     const rating = popup.querySelector('#rating').value;
+                    const status = popup.querySelector('#status').value;
                     // You can send the review data here, for example:
-                    sendReview(comment, rating);
+                    const res = sendReview(paper.reviewId, paper.paper.paperId, status, rating, comment );
+
+                    alert(res)
                     // Close the popup
                     li.removeChild(popup);
                 });

@@ -1,6 +1,7 @@
 package com.example.conference_management_system.controller;
 
 import com.example.conference_management_system.dto.SubmittedPaper;
+import com.example.conference_management_system.entity.Paper;
 import com.example.conference_management_system.service.paperService.PaperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +14,9 @@ public class PaperController {
     PaperService paperService;
 
     @PostMapping("/submitPaper")
-    public String submitPaper(@RequestBody SubmittedPaper submittedPaper) {
+    public Paper submitPaper(@RequestBody SubmittedPaper submittedPaper) {
 
-        String result = paperService.submitPaper(submittedPaper);
+        Paper result = paperService.submitPaper(submittedPaper);
 
         return result;
 

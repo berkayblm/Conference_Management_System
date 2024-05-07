@@ -33,8 +33,18 @@ public class PaperServiceImpl implements PaperService {
     private ReviewRepository reviewRepository;
 
 
+    public PaperServiceImpl(UserRepository userRepository
+            , ConferenceRepository conferenceRepository
+            , PaperRepository paperRepository
+            , ReviewRepository reviewRepository) {
+        this.userRepository = userRepository;
+        this.conferenceRepository = conferenceRepository;
+        this.paperRepository = paperRepository;
+        this.reviewRepository = reviewRepository;
+    }
+
     @Override
-    public String submitPaper(SubmittedPaper submittedPaper)  {
+    public Paper submitPaper(SubmittedPaper submittedPaper)  {
 
         Optional<User> user =
                 userRepository
@@ -50,6 +60,7 @@ public class PaperServiceImpl implements PaperService {
         PaperStatus status = PaperStatus.Pending;
 
         Paper paper = new Paper();
+//        paper.setPaperId(1);
         paper.setPaperUrl(submittedPaper.getPaperUrl());
         paper.setTitle(submittedPaper.getTitle());
         paper.setPaperAbstract(submittedPaper.getPaperAbstract());
@@ -64,6 +75,7 @@ public class PaperServiceImpl implements PaperService {
         Optional<User> reviewer = userRepository.findRandomReviewer();
 
         Review review = new Review();
+//        review.setReviewId(1);
         review.setReviewer(reviewer.get());
         review.setPaper(paper);
         review.setRating(0);
@@ -71,7 +83,7 @@ public class PaperServiceImpl implements PaperService {
 
         reviewRepository.save(review);
 
-        return "OK";
+        return paper;
 
 
 

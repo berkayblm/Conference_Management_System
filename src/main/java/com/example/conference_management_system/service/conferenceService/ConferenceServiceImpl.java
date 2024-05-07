@@ -15,6 +15,10 @@ public class ConferenceServiceImpl implements ConferenceService{
     @Autowired
     private ConferenceRepository conferenceRepository;
 
+    public ConferenceServiceImpl(ConferenceRepository conferenceRepository){
+        this.conferenceRepository = conferenceRepository;
+    }
+
     @Override
     public List<Conference> getAllConferences() {
         return conferenceRepository.findAll();

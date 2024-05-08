@@ -132,7 +132,7 @@
                   30.04.2024
                 </h6>
                 <div >
-                  <button type="submit" style="background-color: #00c6a9;color: white"
+                  <button id="myButton" type="submit" style="background-color: #00c6a9;color: white"
                           class="btn ">View Conference</button>
                 </div>
               </div>
@@ -142,6 +142,12 @@
       </div>
     </div>
   </section>
+
+  <script>
+    document.getElementById("myButton").addEventListener("click", function() {
+      window.location.href = "conference_details.html";
+    });
+  </script>
 
   <!-- end team section -->
 

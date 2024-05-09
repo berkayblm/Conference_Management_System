@@ -19,9 +19,14 @@ import java.util.Optional;
 public class ReviewServiceImpl implements ReviewService{
 
     @Autowired
-    ReviewRepository reviewRepository;
+    private ReviewRepository reviewRepository;
     @Autowired
     private PaperRepository paperRepository;
+
+    public ReviewServiceImpl(ReviewRepository reviewRepository, PaperRepository paperRepository) {
+        this.reviewRepository = reviewRepository;
+        this.paperRepository = paperRepository;
+    }
 
     @Override
     public List<Review> findAllReviewsByReviewer(User reviewer) {

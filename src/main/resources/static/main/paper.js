@@ -122,7 +122,7 @@ const submitPaper = async (downloadURL, paperTitle) => {
         });
 
         if (response.ok) {
-            console.log('Paper submitted successfully, şimdi biat et bana köle');
+
             // You can handle success actions here, such as showing a success message to the user
         } else {
             console.error('Failed to submit paper');

@@ -2,7 +2,6 @@ package com.example.conference_management_system.repository;
 
 import com.example.conference_management_system.entity.Conference;
 import com.example.conference_management_system.entity.Paper;
-import com.example.conference_management_system.entity.Review;
 import com.example.conference_management_system.entity.User;
 import com.example.conference_management_system.utils.PaperStatus;
 import com.example.conference_management_system.utils.UserRole;
@@ -11,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -46,14 +44,12 @@ class PaperRepositoryTest {
         paper.setKeywords("keywords");
         paper.setSenderUser(author);
 
-
         // act
         Paper result = paperRepository.save(paper);
 
         // assert
         Assertions.assertThat(result).isNotNull();
         Assertions.assertThat(result.getPaperId()).isGreaterThan(0);
-
     }
 
     @Test

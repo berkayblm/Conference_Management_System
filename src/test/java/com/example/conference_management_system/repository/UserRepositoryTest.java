@@ -1,9 +1,6 @@
 package com.example.conference_management_system.repository;
 
-import com.example.conference_management_system.entity.Conference;
-import com.example.conference_management_system.entity.Paper;
 import com.example.conference_management_system.entity.User;
-import com.example.conference_management_system.utils.PaperStatus;
 import com.example.conference_management_system.utils.UserRole;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -45,6 +42,7 @@ class UserRepositoryTest {
     public void userRepository_getUserByEmailAndPassword_returnFoundUser(){
 
         User user = new User();
+//        user.setUserId(9);
         user.setUserRole(UserRole.Author);
         user.setPassword("password1");
         user.setUsername("author1");

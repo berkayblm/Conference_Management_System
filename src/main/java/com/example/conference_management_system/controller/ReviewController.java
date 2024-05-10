@@ -14,11 +14,16 @@ import java.util.List;
 @RequestMapping("/api/reviews")
 public class ReviewController {
 
-    @Autowired
+    final
     ReviewService reviewService;
 
-    @Autowired
+    final
     UserService userService;
+
+    public ReviewController(ReviewService reviewService, UserService userService) {
+        this.reviewService = reviewService;
+        this.userService = userService;
+    }
 
     @GetMapping("/{reviewerId}")
     public List<Review> getAllReviewsByReviewerId(@PathVariable int reviewerId) {

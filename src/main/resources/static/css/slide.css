@@ -35,13 +35,26 @@ label{
     cursor: pointer;
     transition: .5s ease-in-out;
 }
+label.top{
+    color: #fff;
+    font-size: 2.3em;
+    justify-content: center;
+    display: flex;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    margin-left: 60px;
+    margin-right: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
 input{
     width: 60%;
     height: 20px;
     background: #e0dede;
     justify-content: center;
     display: flex;
-    margin: 20px auto;
+    margin: 10px auto;
     padding: 10px;
     border: none;
     outline: none;
@@ -87,4 +100,16 @@ button:hover{
 }
 #chk:checked ~ .signup label{
     transform: scale(.6);
+}
+select {
+    width: 60%;
+    height: 40px;
+    background: #e0dede;
+    margin: 20px auto; /* Yatay olarak ortalamak için */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    display: block; /* Ortalamak için */
 }

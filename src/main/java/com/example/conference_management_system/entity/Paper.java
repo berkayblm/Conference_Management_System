@@ -10,6 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 @EqualsAndHashCode
+@Builder
 public class Paper {
 
     @Id

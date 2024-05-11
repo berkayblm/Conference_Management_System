@@ -27,16 +27,11 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PaperServiceTest {
-
     private PaperServiceImpl paperService;
     private UserRepository userRepository;
-
     private ConferenceRepository conferenceRepository;
-
     private PaperRepository paperRepository;
     private ReviewRepository reviewRepository;
-
-
     @BeforeEach
     void setUp() {
         paperRepository = Mockito.mock(PaperRepository.class);
@@ -44,16 +39,12 @@ class PaperServiceTest {
         conferenceRepository = Mockito.mock(ConferenceRepository.class);
         reviewRepository = Mockito.mock(ReviewRepository.class);
 
-
         paperService = new PaperServiceImpl(userRepository, conferenceRepository
                 , paperRepository, reviewRepository);
-
     }
 
     @Test
     void submitPaper() {
-
-
 
         User author = new User();
         author.setUserId(1);
@@ -72,9 +63,6 @@ class PaperServiceTest {
         Conference conference = new Conference();
         conference.setConferenceId(1);
         conference.setTitle("conference");
-//        conference.setDate(new Date());
-
-
 
         SubmittedPaper submittedPaper = new SubmittedPaper();
         submittedPaper.setPaperAbstract("abstract");
@@ -85,7 +73,6 @@ class PaperServiceTest {
 
         Paper paper = new Paper();
         paper.setPaperAbstract("abstract");
-//        paper.setPaperId(10);
         paper.setPaperUrl(null);
         paper.setTitle("title");
         paper.setKeywords("keyword");
@@ -98,21 +85,19 @@ class PaperServiceTest {
         review.setReviewer(reviewer);
         review.setComment("");
         review.setRating(0);
-//        review.setReviewId(1);
-
 
         Mockito.when(paperRepository.save(paper)).thenReturn(paper);
         Mockito.when(conferenceRepository
-                .getConferenceByConferenceId(conference.getConferenceId())).thenReturn(Optional.of(conference));
-        Mockito.when(userRepository.getUserByUserId(author.getUserId())).thenReturn(Optional.of(author));
-        Mockito.when(userRepository.findRandomReviewer()).thenReturn(Optional.of(reviewer));
+                .getConferenceByConferenceId(conference.getConferenceId()))
+                .thenReturn(Optional.of(conference));
+        Mockito.when(userRepository.getUserByUserId(author.getUserId()))
+                .thenReturn(Optional.of(author));
+        Mockito.when(userRepository.findRandomReviewer())
+                .thenReturn(Optional.of(reviewer));
+
         Paper result = paperService.submitPaper(submittedPaper);
-
-
         Assertions.assertEquals(result, paper);
-
         Mockito.verify(paperRepository).save(paper);
-
 
     }
 }

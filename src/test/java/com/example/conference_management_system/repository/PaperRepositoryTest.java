@@ -6,6 +6,7 @@ import com.example.conference_management_system.entity.User;
 import com.example.conference_management_system.utils.PaperStatus;
 import com.example.conference_management_system.utils.UserRole;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -20,30 +21,25 @@ class PaperRepositoryTest {
 
     @Autowired
     private PaperRepository paperRepository;
+    private User author;
+    private Conference conference;
+    private Paper paper;
+
+    @BeforeEach
+    public void setup(){
+        author = User.builder().userRole(UserRole.Author).password("password")
+                .username("username").email("test@gmail.com").build();
+
+        conference = Conference.builder().theme("theme").title("title").date(null)
+                .location("location").build();
+
+        paper = Paper.builder().conference(conference).status(PaperStatus.Pending)
+                .paperUrl("testUrl.com").keywords("keywords").senderUser(author)
+                .build();
+    }
 
     @Test
     public void paperRepository_saveAll_returnSavedPaper(){
-
-        User author = new User();
-        author.setUserRole(UserRole.Author);
-        author.setPassword("password");
-        author.setUsername("username");
-        author.setEmail("email");
-
-        Conference conference = Conference.builder()
-                .theme("theme")
-                .title("title")
-                .date(null)
-                .location("location")
-                .build();
-
-        Paper paper = new Paper();
-        paper.setConference(conference);
-        paper.setStatus(PaperStatus.Pending);
-        paper.setPaperUrl("url");
-        paper.setKeywords("keywords");
-        paper.setSenderUser(author);
-
         // act
         Paper result = paperRepository.save(paper);
 
@@ -54,27 +50,6 @@ class PaperRepositoryTest {
 
     @Test
     public void paperRepository_findPaperByPaperId_returnSavedPaper(){
-
-        User author = new User();
-        author.setUserRole(UserRole.Author);
-        author.setPassword("password");
-        author.setUsername("username");
-        author.setEmail("email");
-
-        Conference conference = Conference.builder()
-                .theme("theme")
-                .title("title")
-                .date(null)
-                .location("location")
-                .build();
-
-        Paper paper = new Paper();
-        paper.setConference(conference);
-        paper.setStatus(PaperStatus.Pending);
-        paper.setPaperUrl("url");
-        paper.setKeywords("keywords");
-        paper.setSenderUser(author);
-
         // act
         Optional<Paper> result = paperRepository
                 .findPaperByPaperId(paper.getPaperId());

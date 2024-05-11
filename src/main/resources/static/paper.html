@@ -193,21 +193,20 @@
 </section>
 <!-- end contact section -->
 
+
 <!-- info section -->
-<section class="info_section ">
+<section class="info_section">
   <div class="container">
     <div class="info_top">
       <div class="info_logo">
-        <a href="">
+        <a href="#">
           <img src="images/cmslogo.png" alt="">
         </a>
       </div>
       <div class="info_form">
-        <form action="">
+        <form id="subscribeForm"> <!-- Added ID to the form -->
           <input type="email" placeholder="Your email">
-          <button>
-            Subscribe
-          </button>
+          <button type="button" onclick="subscribe()">Subscribe</button> <!-- Added onclick event -->
         </form>
       </div>
     </div>
@@ -218,36 +217,30 @@
             Address
           </h5>
           <div class="info_contact">
-            <a href="">
+            <a href="#">
               <i class="fa fa-map-marker" aria-hidden="true"></i>
-              <span>
-                  Location
-                </span>
+              <span>Location</span>
             </a>
-            <a href="">
+            <a href="#">
               <i class="fa fa-phone" aria-hidden="true"></i>
-              <span>
-                  Call +01 1234567890
-                </span>
+              <span>Call +01 1234567890</span>
             </a>
-            <a href="">
+            <a href="#">
               <i class="fa fa-envelope"></i>
-              <span>
-                  demo@gmail.com
-                </span>
+              <span>demo@gmail.com</span>
             </a>
           </div>
           <div class="social_box">
-            <a href="">
+            <a href="#">
               <i class="fa fa-facebook" aria-hidden="true"></i>
             </a>
-            <a href="">
+            <a href="#">
               <i class="fa fa-twitter" aria-hidden="true"></i>
             </a>
-            <a href="">
+            <a href="#">
               <i class="fa fa-linkedin" aria-hidden="true"></i>
             </a>
-            <a href="">
+            <a href="#">
               <i class="fa fa-instagram" aria-hidden="true"></i>
             </a>
           </div>
@@ -258,18 +251,9 @@
               Useful link
             </h5>
             <div class="info_links_menu">
-              <a href="index.html">
-                Home
-              </a>
-              <a href="about.html">
-                About
-              </a>
-              <a href="conference.html">
-                Conferences
-              </a>
-              <a class="active" href="paper.html">
-                Papers
-              </a>
+              <a class="active" href="index.html">Home</a>
+              <a href="about.html">About</a>
+              <a href="conference.html">Conferences</a>
             </div>
           </div>
         </div>
@@ -279,13 +263,19 @@
 </section>
 <!-- end info_section -->
 
+<script>
+  function subscribe() {
+    alert('Not implemented yet'); // Display "Not implemented yet" message when "Subscribe" button is clicked
+  }
+</script>
+
 
 <!-- footer section -->
 <footer class="footer_section">
   <div class="container">
     <p>
       &copy; <span id="displayYear"></span> All Rights Reserved By
-      <a href="https://html.design/">Free Html Templates</a>
+      <a href="https://html.design/">Imparator Fatih Terim</a>
     </p>
   </div>
 </footer>

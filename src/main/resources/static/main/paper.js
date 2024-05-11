@@ -45,29 +45,23 @@ const inputElement = document.getElementById("uploadInput")
 document.getElementById("send_button").addEventListener("click", handleFiles, false);
 
 function handleFiles() {
-    const fileList = inputElement.files; /* now you can work with the file list */
-    const selectedFile = fileList[0]
-    console.log(selectedFile.name)
+    const fileList = inputElement.files;
+    const selectedFile = fileList[0];
+    console.log(selectedFile.name);
 
-    const storageRef = ref(storage, 'files/' + selectedFile.name)
+    const storageRef = ref(storage, 'files/' + selectedFile.name);
 
-    uploadBytes(storageRef, selectedFile)
-        .then((snapshot) => {
-            console.log('Uploaded a blob or file!');
-        });
+    // Show progress bar container
+    document.getElementById("progressBarContainer").style.display = 'block';
 
     const uploadTask = uploadBytesResumable(storageRef, selectedFile);
 
-    // Register three observers:
-    // 1. 'state_changed' observer, called any time the state changes
-    // 2. Error observer, called on failure
-    // 3. Completion observer, called on successful completion
     uploadTask.on('state_changed',
         (snapshot) => {
-            // Observe state change events such as progress, pause, and resume
-            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             console.log('Upload is ' + progress + '% done');
+            document.getElementById("progressBar").style.width = progress + '%'; // Update progress bar width
+
             switch (snapshot.state) {
                 case 'paused':
                     console.log('Upload is paused');
@@ -79,18 +73,18 @@ function handleFiles() {
         },
         (error) => {
             // Handle unsuccessful uploads
+            console.error('Upload failed: ', error);
+            alert('Error during file upload: ' + error);
         },
         () => {
-            // Handle successful uploads on complete
-            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                 console.log('File available at', downloadURL);
-                //todo: handle downloadURL
                 submitPaper(downloadURL, document.getElementById("paper_title").value);
+                document.getElementById("progressBarContainer").style.display = 'none'; // Hide progress bar after upload
+                document.getElementById("progressBar").style.width = '0%'; // Reset progress bar
             });
         }
     );
-
 }
 
 
@@ -121,12 +115,11 @@ const submitPaper = async (downloadURL, paperTitle) => {
             body: JSON.stringify(data)
         });
 
+        // existing code...
         if (response.ok) {
-
-            // You can handle success actions here, such as showing a success message to the user
+            showSuccessPopup("Paper submitted successfully!"); // Show success popup
         } else {
             console.error('Failed to submit paper');
-            // Handle error scenarios here
         }
     } catch (error) {
         console.error('Error submitting paper:', error);
@@ -172,6 +165,22 @@ fetchConferences();
 console.log(sessionStorage.getItem("userId"), sessionStorage.getItem("userRole"), sessionStorage.getItem("userName"))
 
 
+
+function showSuccessPopup(message) {
+    const popup = document.createElement('div');
+    popup.className = 'success-popup';
+    popup.textContent = message;
+    document.body.appendChild(popup);
+    setTimeout(() => {
+        popup.style.bottom = '20px'; // Animate popup sliding up
+    }, 100);
+    setTimeout(() => {
+        popup.style.bottom = '-100px'; // Animate popup sliding down after 4 seconds
+    }, 4000);
+    setTimeout(() => {
+        document.body.removeChild(popup); // Remove popup after it slides down
+    }, 4500);
+}
 
 
 

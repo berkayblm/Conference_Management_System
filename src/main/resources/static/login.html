@@ -53,35 +53,42 @@
 
 
 <script>
-
+    sessionStorage.clear();
 
     function login() {
         var email = document.getElementById("emailLogin").value;
         var password = document.getElementById("passwordLogin").value;
 
+        // Check if email or password fields are empty
+        if (!email || !password) {
+            alert('Please enter both email and password.');
+            return; // Stop execution if fields are empty
+        }
+
         fetch('http://localhost:8080/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-
             },
             body: JSON.stringify({ email: email, password: password })
         })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Login failed. Please check your credentials and try again.'); // Handle non-2xx responses
+                }
+                return response.json();
+            })
             .then(data => {
                 console.log(data);
-
                 sessionStorage.setItem("userId", data.userId);
                 sessionStorage.setItem("userName", data.userName);
                 sessionStorage.setItem("userRole", data.userRole);
-
-                window.location.href = "index.html";
-
+                window.location.href = "index.html"; // Redirect on successful login
             })
             .catch(error => {
                 console.error('Error:', error);
+                alert(error.message); // Display error to the user
             });
-
     }
 
 

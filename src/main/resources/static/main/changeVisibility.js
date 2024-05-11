@@ -19,3 +19,23 @@ if(userRole === "Reviewer"){
     itemPaper.style.display = "none";
     console.log(userRole);
 }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    updateNavbar();
+});
+
+function updateNavbar() {
+    const userName = sessionStorage.getItem("userName");
+    const userRole = sessionStorage.getItem("userRole");
+    if (userName && userRole) {
+        document.getElementById("userNameDisplay").textContent = userName;
+        document.getElementById("userRoleDisplay").textContent = userRole;
+        document.getElementById("userArea").style.display = "block";
+        document.getElementById("loginLink").style.display = "none";
+    } else {
+        document.getElementById("userArea").style.display = "none";
+        document.getElementById("loginLink").style.display = "block";
+    }
+}
+

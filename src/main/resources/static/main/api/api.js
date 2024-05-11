@@ -67,13 +67,8 @@ export const getReviews = async () => {
 
 }
 
-
 export const sendReview = async (reviewId, paperId, status, rating, comment) => {
-
-    console.log(reviewId, paperId, status, rating, comment)
-
     const url = `http://localhost:8080/api/reviews/updateReview`;
-
 
     try {
         const response = await fetch(url, {
@@ -81,23 +76,18 @@ export const sendReview = async (reviewId, paperId, status, rating, comment) => 
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({reviewId: reviewId, paperId: paperId, status: status, rating: rating, comment: comment})
+            body: JSON.stringify({ reviewId, paperId, status, rating, comment })
         });
-
+        console.log(response)
         if (response.ok) {
-
-            return res;
-
-
-
-            // You can handle success actions here, such as showing a success message to the user
+            //const result = await response.json();  // Assuming server sends back a JSON response
+            return { success: true, message: 'Review submitted successfully!' };
         } else {
-            console.error('Failed to get reviews');
-            // Handle error scenarios here
+            console.error('Failed to submit review');
+            return { success: false, message: 'Failed to submit review' };
         }
     } catch (error) {
-        console.error('Error retrieving reviews:', error);
-        // Handle network errors or other exceptions
+        console.error('Error submitting review:', error);
+        return { success: false, message: 'Error submitting review: ' + error.message };
     }
-
 }

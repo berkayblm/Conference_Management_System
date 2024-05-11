@@ -35,6 +35,40 @@
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 
+  <style>
+    .success-popup {
+      position: fixed;
+      left: 50%;
+      bottom: -100px;
+      transform: translateX(-50%);
+      background: #28a745; /* Bootstrap success color */
+      color: white;
+      padding: 15px 30px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: bottom 0.5s;
+      z-index: 1050; /* Higher than most content */
+    }
+
+    #progressBarContainer {
+      width: 100%;
+      background-color: #ddd;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    #progressBar {
+      height: 20px;
+      width: 0%;
+      background-color: #28a745; /* Bootstrap success color */
+      border-radius: 5px;
+      transition: width 0.4s ease;
+      text-align: center;
+      line-height: 20px; /* same as height to vertically center text */
+      color: white;
+    }
+  </style>
+
 </head>
 
 
@@ -48,7 +82,7 @@
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
-            <img src="images/cmslogo.png" alt="">
+            <img src="images/cmslogo.png" alt="" >
           </a>
 
 
@@ -68,23 +102,26 @@
                 <li class="nav-item">
                   <a class="nav-link" href="conference.html">Conferences</a>
                 </li>
-                <li class="nav-item">
+                <li id="papers" class="nav-item" style="display: none">
                   <a class="nav-link" href="paper.html">Papers</a>
+                </li>
+                <li id="submitted_reviews" class="nav-item" style="display: none">
+                  <a class="nav-link" href="assigned_reviews.html">Submitted Reviews</a>
                 </li>
               </ul>
             </div>
             <div class="quote_btn-container">
-              <a href="login.html">
+              <div id="userArea" style="display: none; ">
+
+                <span id="userNameDisplay" style="color: white"></span> |
+                <span id="userRoleDisplay" style="margin-right: 30px; color: white"></span>
+
+                <a href="login.html">Logout</a>
+              </div>
+              <a href="login.html" id="loginLink">
                 <i class="fa fa-user" aria-hidden="true"></i>
-                <span>
-                    Login / Sign up
-                  </span>
+                <span>Login / Sign up</span>
               </a>
-              <form class="form-inline">
-                <!--                  <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">-->
-                <!--                    <i class="fa fa-search" aria-hidden="true"></i>-->
-                <!--                  </button>-->
-              </form>
             </div>
           </div>
         </nav>
@@ -108,6 +145,7 @@
       <div class="col-md-7">
         <div class="form_container">
           <form action="">
+
 
             <div class="conference-list">
 
@@ -137,6 +175,11 @@
                 ADD
               </button>
             </div>
+
+            <div id="progressBarContainer" style="display: none; margin-top: 20px;">
+              <div id="progressBar" style="width: 0%; background-color: #00c6a9; height: 20px; border-radius: 5px;"></div>
+            </div>
+
           </form>
         </div>
       </div>
@@ -264,7 +307,7 @@
 
 <!--  firebase config-->
 <script type="module" src="main/paper.js"></script>
-
+<script type="module" src="main/changeVisibility.js"></script>
 </body>
 
 </html>

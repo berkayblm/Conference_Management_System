@@ -56,9 +56,13 @@
 
     .popup-content {
         background-color: white;
-        padding: 20px;
+        padding: 20px;  /* Make sure this padding doesn't push the close button out of view */
         border-radius: 10px;
+        position: relative;  /* Ensure this is set so positioning of children is relative to this container */
+        width: auto; /* Adjust width as needed */
+        min-width: 300px; /* Ensuring the popup is not too narrow */
     }
+
 
     .review-popup textarea,
     .review-popup input {
@@ -69,20 +73,39 @@
     .review-popup button {
         width: 100%;
     }
+    * {
+        box-sizing: border-box; /* Ensures padding and border are included in the width/height */
+    }
 
     .close-btn {
-        position: fixed;
-        top: 10px;
-        right: 10px;
+        position: absolute;  /* Ensure it positions relative to its nearest positioned ancestor */
+        top: 0px;  /* Align to the top edge of .popup-content */
+        right: 0px;  /* Align to the right edge of .popup-content */
         background-color: transparent;
         border: none;
         font-size: 20px;
         cursor: pointer;
         color: #555;
+        padding: 10px; /* Give some space around the button for easier clicking */
     }
 
     .close-btn:hover {
         color: #000;
+    }
+
+
+    .success-message {
+        position: fixed;
+        left: 50%;
+        bottom: -100px;
+        transform: translateX(-50%);
+        background: #28a745; /* Success color green */
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        transition: bottom 0.5s;
+        z-index: 9999999; /* Ensures visibility over other elements */
     }
 </style>
 
@@ -98,7 +121,7 @@
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
                     <a class="navbar-brand" href="index.html">
-                        <img src="images/cmslogo.png" alt="">
+                        <img src="images/cmslogo.png" alt="" >
                     </a>
 
 
@@ -118,24 +141,26 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="conference.html">Conferences</a>
                                 </li>
-
+                                <li id="papers" class="nav-item" style="display: none">
+                                    <a class="nav-link" href="paper.html">Papers</a>
+                                </li>
                                 <li id="submitted_reviews" class="nav-item" style="display: none">
-                                    <a class="nav-link" href="paper.html">Submitted Reviews</a>
+                                    <a class="nav-link" href="assigned_reviews.html">Submitted Reviews</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="quote_btn-container">
-                            <a href="login.html">
+                            <div id="userArea" style="display: none; ">
+
+                                <span id="userNameDisplay"></span> |
+                                <span id="userRoleDisplay" style="margin-right: 30px;"></span>
+
+                                <a href="login.html">Logout</a>
+                            </div>
+                            <a href="login.html" id="loginLink">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <span>
-                    Login / Sign up
-                  </span>
+                                <span>Login / Sign up</span>
                             </a>
-                            <form class="form-inline">
-                                <!--                  <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">-->
-                                <!--                    <i class="fa fa-search" aria-hidden="true"></i>-->
-                                <!--                  </button>-->
-                            </form>
                         </div>
                     </div>
                 </nav>

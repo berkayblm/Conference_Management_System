@@ -6,7 +6,9 @@ import com.example.conference_management_system.entity.Review;
 import com.example.conference_management_system.entity.User;
 import com.example.conference_management_system.utils.PaperStatus;
 import com.example.conference_management_system.utils.UserRole;
+import org.aspectj.lang.annotation.Before;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -20,47 +22,33 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class ReviewRepositoryTest {
-
     @Autowired
     private ReviewRepository reviewRepository;
+    private User reviewer;
+    private User author;
+    private Conference conference;
+    private Paper paper;
+    private Review review;
+    @BeforeEach
+    public void setup(){
+        reviewer = User.builder().userRole(UserRole.Reviewer).password("password")
+                .username("username").email("email").userId(1).build();
+
+        author = User.builder().userRole(UserRole.Author).password("password")
+                .username("username").email("email").build();
+
+        Conference conference = Conference.builder().theme("theme").title("title")
+                .date(null).location("location").build();
+
+        paper = Paper.builder().conference(conference).status(PaperStatus.Pending)
+                .paperUrl("url").keywords("keywords").senderUser(author).build();
+
+        review = Review.builder().reviewer(reviewer).paper(paper).comment("comment")
+                .rating(0).build();
+    }
 
     @Test
     public void reviewRepository_saveAll_returnSavedReview(){
-
-        // arrange
-        User reviewer = new User();
-        reviewer.setUserRole(UserRole.Reviewer);
-        reviewer.setPassword("password");
-        reviewer.setUsername("username");
-        reviewer.setEmail("email");
-
-        User author = new User();
-        author.setUserRole(UserRole.Author);
-        author.setPassword("password");
-        author.setUsername("username");
-        author.setEmail("email");
-
-        Conference conference = Conference.builder()
-                .theme("theme")
-                .title("title")
-                .date(null)
-                .location("location")
-                .build();
-
-        Paper paper = new Paper();
-        paper.setConference(conference);
-        paper.setStatus(PaperStatus.Pending);
-        paper.setPaperUrl("url");
-        paper.setKeywords("keywords");
-        paper.setSenderUser(author);
-
-        Review review = Review.builder()
-                .reviewer(reviewer)
-                .paper(paper)
-                .comment("comment")
-                .rating(0)
-                .build();
-
         // act
         Review result = reviewRepository.save(review);
 
@@ -72,81 +60,14 @@ class ReviewRepositoryTest {
 
     @Test
     public void reviewRepository_findReviewByReviewId_returnSavedReview(){
-
-        // arrange
-        User reviewer = new User();
-        reviewer.setUserRole(UserRole.Reviewer);
-        reviewer.setPassword("password");
-        reviewer.setUsername("username");
-        reviewer.setEmail("email");
-
-        User author = new User();
-        author.setUserRole(UserRole.Author);
-        author.setPassword("password");
-        author.setUsername("username");
-        author.setEmail("email");
-
-        Conference conference = Conference.builder()
-                .theme("theme")
-                .title("title")
-                .date(null)
-                .location("location")
-                .build();
-
-        Paper paper = new Paper();
-        paper.setConference(conference);
-        paper.setStatus(PaperStatus.Pending);
-        paper.setPaperUrl("url");
-        paper.setKeywords("keywords");
-        paper.setSenderUser(author);
-
-        Review review = Review.builder()
-                .reviewer(reviewer)
-                .paper(paper)
-                .comment("comment")
-                .rating(0)
-                .build();
-
-        // act
         Optional<Review> result = reviewRepository
                 .findReviewByReviewId(review.getReviewId());
 
-        // assert
         Assertions.assertThat(result).isNotNull();
-
     }
 
     @Test
     public void reviewRepository_findAllByReviewer_returnListOfReviews(){
-
-        // arrange
-        User reviewer = new User();
-        reviewer.setUserId(1);
-        reviewer.setUserRole(UserRole.Reviewer);
-        reviewer.setPassword("password");
-        reviewer.setUsername("username");
-        reviewer.setEmail("email");
-
-        User author = new User();
-        author.setUserRole(UserRole.Author);
-        author.setPassword("password");
-        author.setUsername("username");
-        author.setEmail("email");
-
-        Conference conference = Conference.builder()
-                .theme("theme")
-                .title("title")
-                .date(null)
-                .location("location")
-                .build();
-
-        Paper paper = new Paper();
-        paper.setConference(conference);
-        paper.setStatus(PaperStatus.Pending);
-        paper.setPaperUrl("url");
-        paper.setKeywords("keywords");
-        paper.setSenderUser(author);
-
         // act
         List<Review> result = reviewRepository
                 .findAllByReviewer(reviewer);

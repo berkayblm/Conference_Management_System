@@ -114,15 +114,10 @@
                   <h1>
                     Conference Management <br>
                     <span>
-                        System
-                      </span>
+                      System
+                    </span>
                   </h1>
-                  <p>
-                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
-                  </p>
-                  <a href="">
-                    Contact Us
-                  </a>
+                  <a href="#" onclick="contactUs()">Contact Us</a> <!-- Added onclick event -->
                 </div>
               </div>
               <div class="col-md-6">
@@ -146,15 +141,10 @@
                   <h1>
                     Conference Management <br>
                     <span>
-                        System
-                      </span>
+                      System
+                    </span>
                   </h1>
-                  <p>
-                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
-                  </p>
-                  <a href="">
-                    Contact Us
-                  </a>
+                  <a href="#" onclick="contactUs()">Contact Us</a> <!-- Added onclick event -->
                 </div>
               </div>
               <div class="col-md-6">
@@ -178,15 +168,10 @@
                   <h1>
                     Conference Management <br>
                     <span>
-                        System
-                      </span>
+                      System
+                    </span>
                   </h1>
-                  <p>
-                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
-                  </p>
-                  <a href="">
-                    Contact Us
-                  </a>
+                  <a href="#" onclick="contactUs()">Contact Us</a> <!-- Added onclick event -->
                 </div>
               </div>
               <div class="col-md-6">
@@ -212,8 +197,13 @@
 
   </section>
   <!-- end slider section -->
-</div>
 
+  <script>
+    function contactUs() {
+      alert('Not implemented yet'); // Display "Not implemented yet" message when "Contact Us" is clicked
+    }
+  </script>
+</div>
 
 <!-- book section -->
 
@@ -547,7 +537,7 @@
     <div class="row">
       <div class="col-md-7">
         <div class="form_container">
-          <form action="">
+          <form id="contactForm"> <!-- Added ID to the form -->
             <div>
               <input type="text" placeholder="Full Name" />
             </div>
@@ -561,9 +551,7 @@
               <input type="text" class="message-box" placeholder="Message" />
             </div>
             <div class="btn_box">
-              <button>
-                SEND
-              </button>
+              <button type="button" onclick="sendMessage()">SEND</button> <!-- Added onclick event -->
             </div>
           </form>
         </div>
@@ -578,21 +566,26 @@
 </section>
 <!-- end contact section -->
 
+<script>
+  function sendMessage() {
+    alert('Not implemented yet'); // Display "Not implemented yet" message when "SEND" button is clicked
+  }
+</script>
+
+
 <!-- info section -->
-<section class="info_section ">
+<section class="info_section">
   <div class="container">
     <div class="info_top">
       <div class="info_logo">
-        <a href="">
+        <a href="#">
           <img src="images/cmslogo.png" alt="">
         </a>
       </div>
       <div class="info_form">
-        <form action="">
+        <form id="subscribeForm"> <!-- Added ID to the form -->
           <input type="email" placeholder="Your email">
-          <button>
-            Subscribe
-          </button>
+          <button type="button" onclick="subscribe()">Subscribe</button> <!-- Added onclick event -->
         </form>
       </div>
     </div>
@@ -603,36 +596,30 @@
             Address
           </h5>
           <div class="info_contact">
-            <a href="">
+            <a href="#">
               <i class="fa fa-map-marker" aria-hidden="true"></i>
-              <span>
-                  Location
-                </span>
+              <span>Location</span>
             </a>
-            <a href="">
+            <a href="#">
               <i class="fa fa-phone" aria-hidden="true"></i>
-              <span>
-                  Call +01 1234567890
-                </span>
+              <span>Call +01 1234567890</span>
             </a>
-            <a href="">
+            <a href="#">
               <i class="fa fa-envelope"></i>
-              <span>
-                  demo@gmail.com
-                </span>
+              <span>demo@gmail.com</span>
             </a>
           </div>
           <div class="social_box">
-            <a href="">
+            <a href="#">
               <i class="fa fa-facebook" aria-hidden="true"></i>
             </a>
-            <a href="">
+            <a href="#">
               <i class="fa fa-twitter" aria-hidden="true"></i>
             </a>
-            <a href="">
+            <a href="#">
               <i class="fa fa-linkedin" aria-hidden="true"></i>
             </a>
-            <a href="">
+            <a href="#">
               <i class="fa fa-instagram" aria-hidden="true"></i>
             </a>
           </div>
@@ -643,15 +630,9 @@
               Useful link
             </h5>
             <div class="info_links_menu">
-              <a class="active" href="index.html">
-                Home
-              </a>
-              <a href="about.html">
-                About
-              </a>
-              <a href="conference.html">
-                Conferences
-              </a>
+              <a class="active" href="index.html">Home</a>
+              <a href="about.html">About</a>
+              <a href="conference.html">Conferences</a>
             </div>
           </div>
         </div>
@@ -660,6 +641,13 @@
   </div>
 </section>
 <!-- end info_section -->
+
+<script>
+  function subscribe() {
+    alert('Not implemented yet'); // Display "Not implemented yet" message when "Subscribe" button is clicked
+  }
+</script>
+
 
 
 <!-- footer section -->

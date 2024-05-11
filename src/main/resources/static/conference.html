@@ -12,7 +12,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Mico</title>
+  <title>CMS</title>
 
 
   <!-- bootstrap core css -->
@@ -143,6 +143,85 @@
   <script>
     document.getElementById("myButton").addEventListener("click", function() {
       window.location.href = "conference_details.html";
+    });
+  </script>
+
+  <section class="team_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Finished <span>Conferences</span>
+        </h2>
+      </div>
+      <div class="carousel-wrap ">
+        <div class="owl-carousel team_carousel">
+
+          <div class="item">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/konferans_ornek6.jpg" alt="" />
+              </div>
+              <div class="detail-box">
+                <h5 style="color: #00c6a9" >
+                  Sample Conference 1
+                </h5>
+                <h6 style="color: black">
+                  Sample Conference Description 1
+                </h6>
+                <h6 style="color: black; text-align: start">
+                  <i class="fa fa-map-marker"> </i>
+                  Sample Venue 1
+                </h6>
+                <h6 style="color: black">
+                  <i class="fa fa-calendar"> </i>
+                  12.12.2024
+                </h6>
+                <div>
+                  <button id="myButton2" type="submit" style="background-color: #00c6a9;color: white"
+                          class="btn ">Rate Conference</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/konferans_ornek5.jpg" alt="" />
+              </div>
+              <div class="detail-box">
+                <h5 style="color: #00c6a9" >
+                  Sample Conference 2
+                </h5>
+                <h6 style="color: black">
+                  Sample Conference Description 2
+                </h6>
+                <h6 style="color: black; text-align: start">
+                  <i class="fa fa-map-marker"> </i>
+                  Sample Venue 2
+                </h6>
+                <h6 style="color: black">
+                  <i class="fa fa-calendar"> </i>
+                  30.04.2024
+                </h6>
+                <div>
+                  <button id="myButton3" type="submit" style="background-color: #00c6a9;color: white"
+                          class="btn ">Rate Conference</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    document.getElementById("myButton2").addEventListener("click", function() {
+      window.location.href = "post-conference.html";
+    });
+  </script>
+  <script>
+    document.getElementById("myButton3").addEventListener("click", function() {
+      window.location.href = "post-conference.html";
     });
   </script>
 

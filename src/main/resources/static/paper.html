@@ -192,31 +192,7 @@
   </div>
 </section>
 <!-- end contact section -->
-<script>
-  document.getElementById("send_button").addEventListener("click", function() {
-// Başlığı, özeti ve anahtar kelimeleri alın
-    var title = document.getElementById("paper_title").value;
-    var abstract = document.getElementById("abstract").value;
-    var keywords = document.getElementById("keywords").value;
 
-// Dosya yüklendi mi kontrol edin
-    var fileInput = document.getElementById("uploadInput");
-    if (fileInput.files.length === 0) {
-      alert("Please upload a file.");
-      return;
-    }
-
-// Başlık, özet ve anahtar kelimelerin girildiğini kontrol edin
-    if (title.trim() === "" || abstract.trim() === "" || keywords.trim() === "") {
-      alert("Please fill in all fields.");
-      return;
-    }
-
-// Verilerin doğru bir şekilde doldurulduğunu göstermek için bir mesaj gösterin
-    alert("Data is correctly filled.");
-// Verilerin sunucuya gönderilmesi veya başka bir işlem yapılması burada gerçekleştirilebilir
-  });
-</script>
 
 
 <!-- info section -->
@@ -289,9 +265,7 @@
 <!-- end info_section -->
 
 <script>
-  function subscribe() {
-    alert('Not implemented yet'); // Display "Not implemented yet" message when "Subscribe" button is clicked
-  }
+
 </script>
 
 
@@ -323,6 +297,38 @@
 <!--  firebase config-->
 <script type="module" src="main/paper.js"></script>
 <script type="module" src="main/changeVisibility.js"></script>
+
+
+
+<script>
+  document.getElementById("send_button").addEventListener("click", function() {
+// Başlığı, özeti ve anahtar kelimeleri alın
+    var title = document.getElementById("paper_title").value;
+    var abstract = document.getElementById("abstract").value;
+    var keywords = document.getElementById("keywords").value;
+
+// Dosya yüklendi mi kontrol edin
+    var fileInput = document.getElementById("uploadInput");
+    if (fileInput.files.length === 0) {
+      alert("Please upload a file.");
+      return;
+    }
+
+// Başlık, özet ve anahtar kelimelerin girildiğini kontrol edin
+    if (title.trim() === "" || abstract.trim() === "" || keywords.trim() === "") {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+// Verilerin sunucuya gönderilmesi veya başka bir işlem yapılması burada gerçekleştirilebilir
+  });
+
+
+  function subscribe() {
+    alert('Not implemented yet'); // Display "Not implemented yet" message when "Subscribe" button is clicked
+  }
+
+</script>
 </body>
 
 

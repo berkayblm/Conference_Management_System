@@ -1,6 +1,8 @@
 const itemPaper = document.getElementById("papers");
 const itemSubmittedReviews = document.getElementById("submitted_reviews");
+
 const itemConferenceSetup = document.getElementById("conferenceSetup")
+
 let userRole = sessionStorage.getItem("userRole");
 
 if(userRole === "Reviewer"){
@@ -27,11 +29,11 @@ if(userRole === "Reviewer"){
 } else if(userRole === "Organizer"){
     console.log("organizer");
     itemPaper.style.display = "none";
-    try{
-        itemConferenceSetup.style.display = "none";
-    } catch (Exception){
 
-    }
+    itemConferenceSetup.style.display = "block";
+
+
+
     itemSubmittedReviews.style.display = "none";
 } else {
     console.log("asdsa")
@@ -64,5 +66,7 @@ function updateNavbar() {
         document.getElementById("userArea").style.display = "none";
         document.getElementById("loginLink").style.display = "block";
     }
+
+    console.log(userName, userRole)
 }
 
